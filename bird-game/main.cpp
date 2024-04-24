@@ -9,6 +9,7 @@ enum class State {GAME, GAMEOVER, MENU};
 int main() {
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Bird");
 	window.setFramerateLimit(60);
+	window.clear();
 	
 	sf::Texture gameover_texture;
 	gameover_texture.loadFromFile("resources/back1.jpg");
@@ -20,6 +21,13 @@ int main() {
 	gameover_window.setPosition(300, 200);
 	//Game *pGame = new Game();
 	Game game;
+	sf::Texture background_texture;
+	if (!background_texture.loadFromFile("resources/back.jpg")) {
+		exit(1);
+	}
+	sf::Sprite background_sprite;
+	background_sprite.setTexture(background_texture);
+	game.setBackground(background_sprite);
 	
 	State state = State::MENU;
 	MenuState menu_state = menu.getState();

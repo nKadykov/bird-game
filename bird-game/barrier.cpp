@@ -24,18 +24,23 @@ void Barrier::setY(float start_Y) {
 
 void Barrier::moveLeft(sf::Time& dt) {
 	barrier_position.x -= barrier_speed * dt.asSeconds();
+	barrier_sprite.setPosition(barrier_position);
 }
 
 sf::Sprite Barrier::getSprite() const {
 	return barrier_sprite;
 }
 
-sf::Vector2f Barrier::getPosition() const {
-	return barrier_position;
+sf::FloatRect Barrier::getPosition() const {
+	return barrier_sprite.getGlobalBounds();
+}
+
+int Barrier::get_x() const {
+	return barrier_position.x;
 }
 
 void Barrier::draw(sf::RenderWindow& window) {
-	barrier_sprite.rotate(180);
+	/*barrier_sprite.rotate(180);*/
 	barrier_sprite.setPosition(barrier_position);
 	window.draw(barrier_sprite);
 }

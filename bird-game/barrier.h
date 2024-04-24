@@ -20,7 +20,8 @@ public:
 	void setSprite(sf::Sprite&);
 	void setY(float);
 	sf::Sprite getSprite() const;
-	sf::Vector2f getPosition() const;
+	int get_x() const;
+	sf::FloatRect getPosition() const;
 
 	void moveLeft(sf::Time&);
 

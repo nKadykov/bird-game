@@ -23,6 +23,10 @@ BirdState Bird::getState() const {
 	return bird_state;
 }
 
+sf::FloatRect Bird::getPosition() const {
+	return bird_sprite.getGlobalBounds();
+}
+
 void Bird::setSprite(sf::Sprite& sprite) {
 	bird_sprite = sprite;
 }

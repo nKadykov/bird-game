@@ -23,6 +23,7 @@ public:
 	~Game() = default;
 
 	void setState(GameState);
+	void setBackground(sf::Sprite&);
 	GameState getState() const;
 	void draw(sf::RenderWindow&);
 
