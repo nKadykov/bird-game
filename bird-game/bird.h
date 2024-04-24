@@ -8,8 +8,8 @@ class Bird
 private:
 	sf::Sprite bird_sprite;
 	sf::Vector2f bird_position;
-	float acceleration_of_gravity = -9.8f;
-	float bird_acceleration = -50.f;
+	float acceleration_of_gravity = -98000.0f;
+	float bird_acceleration = -50000.0f;
 	BirdState bird_state = BirdState::ALIVE;
 public:
 	Bird();
@@ -25,7 +25,7 @@ public:
 
 	void jump();
 	void move(sf::Time&);
-	bool touchedFloor();
+	bool touchedFloor() const;
 
 	void update(sf::Time&);
 	void draw(sf::RenderWindow&) const;

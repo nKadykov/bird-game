@@ -22,6 +22,7 @@ public:
 	Game& operator=(Game&&) = delete;
 	~Game() = default;
 
+	void setState(GameState);
 	GameState getState() const;
 	void draw(sf::RenderWindow&);
 

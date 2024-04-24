@@ -7,13 +7,15 @@ Barrier::Barrier(sf::Sprite& sprite) {
 	barrier_sprite = sprite;
 }
 
-Barrier::Barrier(float start_y) {
-	barrier_position.x = 720;
-	barrier_position.y = -1.0 * start_y;
+Barrier::Barrier(float start_y, sf::Sprite sprite) {
+	barrier_position.x = 1280;
+	barrier_position.y = start_y;
 
-	sf::Texture barrier_texture;
-	barrier_texture.loadFromFile("resources/barrier.png");
-	barrier_sprite.setTexture(barrier_texture);
+	barrier_sprite = sprite;
+}
+
+void Barrier::setSprite(sf::Sprite& sprite) {
+	barrier_sprite = sprite;
 }
 
 void Barrier::setY(float start_Y) {
