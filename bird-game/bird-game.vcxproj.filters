@@ -57,4 +57,50 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\Again.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\back.jpg">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\barrier.jpg">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\barrier.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\barrier1.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\bird.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\bird0.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\Button1.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\Button2.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\Button3.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\GameOver.jpg">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+    <Image Include="resources\heart.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\back1.mp3">
+      <Filter>Файлы ресурсов</Filter>
+    </Media>
+    <Media Include="resources\music.mp3">
+      <Filter>Файлы ресурсов</Filter>
+    </Media>
+  </ItemGroup>
 </Project>
