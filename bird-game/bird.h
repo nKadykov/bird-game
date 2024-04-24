@@ -21,6 +21,7 @@ public:
 
 	sf::Sprite getSprite() const;
 	BirdState getState() const;
+	void setSprite(sf::Sprite&);
 
 	void jump();
 	void move(sf::Time&);

@@ -22,6 +22,10 @@ BirdState Bird::getState() const {
 	return bird_state;
 }
 
+void Bird::setSprite(sf::Sprite& sprite) {
+	bird_sprite = sprite;
+}
+
 void Bird::move(sf::Time& dt) {
 	bird_acceleration -= acceleration_of_gravity * dt.asSeconds();
 	bird_position.y += bird_acceleration * dt.asSeconds() * dt.asSeconds() / 2;
