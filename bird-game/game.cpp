@@ -1,4 +1,5 @@
 #include "game.h"
+#include <iostream>
 
 Game::Game() {
 	game_state = GameState::ON;
@@ -42,7 +43,7 @@ void Game::start(sf::RenderWindow& window) {
 	
 	sf::Music music;
 	music.openFromFile("resources/back1.mp3");
-	//music.play();
+	music.play();
 
 	sf::Clock clock;
 	sf::Event event;
@@ -50,7 +51,7 @@ void Game::start(sf::RenderWindow& window) {
 	float barrier_time = 0;
 	float time = 0;
 
-	Barrier new_barrier(1000.0, barrier_sprite);
+	Barrier new_barrier(-100.0, barrier_sprite);
 	barrier_deque.push_back(new_barrier);
 
 	BirdState bird_state = bird.getState();
@@ -62,10 +63,17 @@ void Game::start(sf::RenderWindow& window) {
 		time = dt.asSeconds();
 		barrier_time += time;
 
+		sf::Event event;
+		while (window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed) {
+				window.close();
+			}
+		}
+
 		bird_state = bird.getState();
 
 		if (barrier_time > 2.0) {
-			float start_y = 100 + rand() % 600;
+			float start_y = 120 + rand() % 600;
 			Barrier new_barrier(start_y, barrier_sprite);
 			new_barrier.setSprite(barrier_sprite);
 			barrier_deque.push_back(new_barrier);
@@ -103,9 +111,9 @@ void Game::start(sf::RenderWindow& window) {
 		for (int i = 0; i < barrier_deque.size(); i++) {
 			barrier_deque[i].draw(window);
 		}
-		bird.draw(window);
 
 		bird.update(dt);
+		bird.draw(window);
 
 		window.display();
 	}

@@ -19,15 +19,14 @@ int main() {
 	menu.addButton(500, 400, "resources/Button3.png");
 	GameOverWindow gameover_window;
 	gameover_window.setPosition(300, 200);
-	//Game *pGame = new Game();
-	Game game;
+	Game *pGame = new Game();
 	sf::Texture background_texture;
 	if (!background_texture.loadFromFile("resources/back.jpg")) {
 		exit(1);
 	}
 	sf::Sprite background_sprite;
 	background_sprite.setTexture(background_texture);
-	game.setBackground(background_sprite);
+	pGame->setBackground(background_sprite);
 	
 	State state = State::MENU;
 	MenuState menu_state = menu.getState();
@@ -50,46 +49,50 @@ int main() {
 			window.close();
 		}
 
+		if (pGame) {
+			game_state = pGame->getState();
+		}
 		menu_state = menu.getState();
 		button_state = menu.getButtonState();
 		gameover_state = gameover_window.getState();
 
 		if (game_state == GameState::LOSE) {
-			//if (pGame) {
-			//	delete pGame;
-			//	pGame = nullptr;
-			//}
+			if (pGame) {
+				delete pGame;
+				pGame = nullptr;
+			}
 			state = State::GAMEOVER;
-			//game.setState(GameState::ON)
+			game_state = GameState::ON;
 		}
 		if (game_state == GameState::MENU || gameover_state == GameOverState::MENU) {
-			//if (pGame) {
-			//	delete pGame;
-			//	pGame = nullptr;
-			//}
+			if (pGame) {
+				delete pGame;
+				pGame = nullptr;
+			}
 			state = State::MENU;
 			game_state = GameState::ON;
 			gameover_state = GameOverState::ON;
 		}
 		if (button_state == ButtonState::START_GAME || gameover_state == GameOverState::OFF) {
-			//pGame = new Game();
+			if (!pGame) {
+				pGame = new Game();
+				pGame->setBackground(background_sprite);
+			}
 			state = State::GAME;
 			menu.setButtonState(ButtonState::NONE);
 			gameover_window.setState(GameOverState::ON);
-			//game.setState(GameState::ON);
 		}
 		if (button_state == ButtonState::CLOSE) {
-			//if (pGame) {
-			//	delete pGame;
-			//	pGame = nullptr;
-			//}
+			if (pGame) {
+				delete pGame;
+				pGame = nullptr;
+			}
 			window.close();
 		}
 
 		switch (state) {
 			case State::GAME:
-				//pGame->start(window);
-				game.start(window);
+				pGame->start(window);
 				break;
 			case State::MENU:
 				menu.draw(window);
@@ -102,10 +105,10 @@ int main() {
 		window.display();
 	}
 
-	//if (pGame) {
-	//	delete pGame;
-	//	pGame = nullptr;
-	//}
+	if (pGame) {
+		delete pGame;
+		pGame = nullptr;
+	}
 
 	return 0;
 }
