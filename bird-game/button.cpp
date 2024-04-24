@@ -12,6 +12,6 @@ void Button::setButtonPosition(int buttonX, int buttonY) {
 	button_sprite.setPosition(buttonX, buttonY);
 }
 
-void Button::draw(sf::RenderWindow& window) {
+void Button::draw(sf::RenderWindow& window) const {
 	window.draw(button_sprite);
 }

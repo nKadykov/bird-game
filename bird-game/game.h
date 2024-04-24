@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <deque>
 #include "bird.h"
 #include "barrier.h"
 
@@ -10,7 +12,7 @@ class Game
 private:
 	sf::Sprite background_sprite;
 	Bird bird;
-	Barrier barrier;
+	std::deque<Barrier> barrier_deque;
 	GameState game_state;
 public:
 	Game();
@@ -21,7 +23,7 @@ public:
 	~Game() = default;
 
 	GameState getState() const;
-	void draw(sf::RenderWindow&) const;
+	void draw(sf::RenderWindow&);
 
 	void start(sf::RenderWindow&);
 };

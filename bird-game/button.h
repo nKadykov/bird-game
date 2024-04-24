@@ -16,5 +16,5 @@ public:
 	~Button() = default;
 
 	void setButtonPosition(int, int);
-	void draw(sf::RenderWindow&);
+	void draw(sf::RenderWindow&) const;
 };

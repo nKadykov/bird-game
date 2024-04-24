@@ -18,7 +18,7 @@ int main() {
 	gameover_window.setPosition(300, 200);
 	Game *pGame = new Game();
 	
-	State state = State::MENU;
+	State state = State::GAME;
 	MenuState menu_state = menu.getState();
 	GameState game_state = GameState::ON;
 	ButtonState button_state = menu.getButtonState();

@@ -1,7 +1,7 @@
 #include "bird.h"
 
 Bird::Bird() {
-	bird_position.x = 0.0;
+	bird_position.x = 100.0;
 	bird_position.y = 720.0 / 2;
 
 	sf::Texture bird_texture;
@@ -36,7 +36,9 @@ void Bird::update(sf::Time& dt) {
 		this->jump();
 	}
 	this->move(dt);
-	if()
+	if (this->touchedFloor()) {
+		bird_state = BirdState::DEAD;
+	}
 	bird_sprite.setPosition(bird_position);
 }
 
