@@ -21,7 +21,7 @@ int main() {
 	gameover_window.setPosition(300, 200);
 	Game *pGame = new Game();
 	sf::Texture background_texture;
-	if (!background_texture.loadFromFile("resources/back.jpg")) {
+	if (!background_texture.loadFromFile("resources/back1.jpg")) {
 		exit(1);
 	}
 	sf::Sprite background_sprite;
