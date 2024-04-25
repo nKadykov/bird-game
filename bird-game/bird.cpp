@@ -19,10 +19,6 @@ void Bird::jump() {
 	bird_acceleration = -50000.0f;
 }
 
-BirdState Bird::getState() const {
-	return bird_state;
-}
-
 sf::FloatRect Bird::getPosition() const {
 	return bird_sprite.getGlobalBounds();
 }
@@ -36,8 +32,20 @@ void Bird::move(sf::Time& dt) {
 	bird_position.y += bird_acceleration* dt.asSeconds() * dt.asSeconds() / 2;
 }
 
-bool Bird::touchedFloor() const {
-	return (bird_position.y == 720) ? true : false;
+void Bird::bounceTop() {
+	if (bird_position.y < 0) {
+		bird_position.y = 0;
+	}
+}
+
+void Bird::bounceFloor() {
+	if (bird_position.y > 650) {
+		bird_position.y = 650;
+		acceleration_of_gravity = 0.0f;
+	}
+	else {
+		acceleration_of_gravity = -98000.0f;
+	}
 }
 
 void Bird::update(sf::Time& dt) {
@@ -45,10 +53,9 @@ void Bird::update(sf::Time& dt) {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		this->jump();
 	}
+	this->bounceTop();
+	this->bounceFloor();
 	this->move(dt);
-	if (this->touchedFloor()) {
-		bird_state = BirdState::DEAD;
-	}
 }
 
 void Bird::draw(sf::RenderWindow& window) const {

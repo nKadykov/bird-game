@@ -56,8 +56,6 @@ void Game::start(sf::RenderWindow& window) {
 	Barrier new_barrier(-100.0, barrier_sprite);
 	barrier_deque.push_back(new_barrier);
 
-	BirdState bird_state = bird.getState();
-
 	while (window.isOpen() && game_state == GameState::ON) {
 
 		dt = clock.getElapsedTime();
@@ -72,10 +70,8 @@ void Game::start(sf::RenderWindow& window) {
 			}
 		}
 
-		bird_state = bird.getState();
-
 		if (barrier_time > 2.0) {
-			float start_y = 120 + rand() % 600;
+			float start_y = rand() % 600 - rand() % 600;
 			Barrier new_barrier(start_y, barrier_sprite);
 			new_barrier.setSprite(barrier_sprite);
 			barrier_deque.push_back(new_barrier);
