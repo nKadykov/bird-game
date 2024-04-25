@@ -17,22 +17,26 @@ GameState Game::getState() const {
 	return game_state;
 }
 
-void Game::draw(sf::RenderWindow& window) {
-	for (int i = 0; i < barrier_deque.size(); i++) {
-		barrier_deque[i].draw(window);
-	}
-	bird.draw(window);
-}
+//void Game::draw(sf::RenderWindow& window) {
+//	for (int i = 0; i < barrier_deque.size(); i++) {
+//		barrier_deque[i].draw(window);
+//	}
+//	bird.draw(window);
+//}
 
 void Game::start(sf::RenderWindow& window) {
 
 	srand(time(0));
+
+	std::deque<Barrier> barrier_deque;
 	sf::Texture barrier_texture;
 	if (!barrier_texture.loadFromFile("resources/barrier.png")) {
 		exit(1);
 	}
 	sf::Sprite barrier_sprite;
 	barrier_sprite.setTexture(barrier_texture);
+
+	Bird bird;
 	sf::Texture bird_texture;
 	if (!bird_texture.loadFromFile("resources/bird.png")) {
 		exit(1);
@@ -43,7 +47,7 @@ void Game::start(sf::RenderWindow& window) {
 	
 	sf::Music music;
 	music.openFromFile("resources/back1.mp3");
-	music.play();
+	//music.play();
 
 	sf::Clock clock;
 	sf::Event event;
@@ -56,7 +60,7 @@ void Game::start(sf::RenderWindow& window) {
 
 	BirdState bird_state = bird.getState();
 
-	while (window.isOpen() || game_state == GameState::ON) {
+	while (window.isOpen() && game_state == GameState::ON) {
 
 		dt = clock.getElapsedTime();
 		clock.restart();
@@ -92,8 +96,10 @@ void Game::start(sf::RenderWindow& window) {
 			bird.jump();
 		}
 
-		for (int i = 0; i < barrier_deque.size(); i++){
-			if (bird.getPosition().intersects(barrier_deque[i].getPosition()) || bird_state == BirdState::DEAD) {
+		bird.update(dt);
+
+		for (int i = 0; i < barrier_deque.size(); i++) {
+			if (bird.getPosition().intersects(barrier_deque[i].getPosition())) {
 				game_state = GameState::LOSE;
 			}
 		}
@@ -111,8 +117,7 @@ void Game::start(sf::RenderWindow& window) {
 		for (int i = 0; i < barrier_deque.size(); i++) {
 			barrier_deque[i].draw(window);
 		}
-
-		bird.update(dt);
+		
 		bird.draw(window);
 
 		window.display();

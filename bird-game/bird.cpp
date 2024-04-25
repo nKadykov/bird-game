@@ -41,6 +41,7 @@ bool Bird::touchedFloor() const {
 }
 
 void Bird::update(sf::Time& dt) {
+	bird_sprite.setPosition(bird_position);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 		this->jump();
 	}
@@ -48,7 +49,6 @@ void Bird::update(sf::Time& dt) {
 	if (this->touchedFloor()) {
 		bird_state = BirdState::DEAD;
 	}
-	bird_sprite.setPosition(bird_position);
 }
 
 void Bird::draw(sf::RenderWindow& window) const {

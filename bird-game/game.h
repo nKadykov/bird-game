@@ -11,8 +11,6 @@ class Game
 {
 private:
 	sf::Sprite background_sprite;
-	Bird bird;
-	std::deque<Barrier> barrier_deque;
 	GameState game_state;
 public:
 	Game();

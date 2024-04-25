@@ -7,6 +7,7 @@
 enum class State {GAME, GAMEOVER, MENU};
 
 int main() {
+
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Bird");
 	window.setFramerateLimit(60);
 	window.clear();
@@ -14,11 +15,14 @@ int main() {
 	sf::Texture gameover_texture;
 	gameover_texture.loadFromFile("resources/back1.jpg");
 	sf::Sprite gameover_sprite(gameover_texture);
+
 	Menu menu("resources/back.jpg");
 	menu.addButton(500, 200, "resources/Button2.png");
 	menu.addButton(500, 400, "resources/Button3.png");
+
 	GameOverWindow gameover_window;
 	gameover_window.setPosition(300, 200);
+
 	Game *pGame = new Game();
 	sf::Texture background_texture;
 	if (!background_texture.loadFromFile("resources/back1.jpg")) {
@@ -62,18 +66,18 @@ int main() {
 				pGame = nullptr;
 			}
 			state = State::GAMEOVER;
-			game_state = GameState::ON;
+			//game_state = GameState::ON;
 		}
-		if (game_state == GameState::MENU || gameover_state == GameOverState::MENU) {
+		else if (game_state == GameState::MENU || gameover_state == GameOverState::MENU) {
 			if (pGame) {
 				delete pGame;
 				pGame = nullptr;
 			}
 			state = State::MENU;
-			game_state = GameState::ON;
+			//game_state = GameState::ON;
 			gameover_state = GameOverState::ON;
 		}
-		if (button_state == ButtonState::START_GAME || gameover_state == GameOverState::OFF) {
+		else if (button_state == ButtonState::START_GAME || gameover_state == GameOverState::OFF) {
 			if (!pGame) {
 				pGame = new Game();
 				pGame->setBackground(background_sprite);
@@ -82,7 +86,7 @@ int main() {
 			menu.setButtonState(ButtonState::NONE);
 			gameover_window.setState(GameOverState::ON);
 		}
-		if (button_state == ButtonState::CLOSE) {
+		else if (button_state == ButtonState::CLOSE) {
 			if (pGame) {
 				delete pGame;
 				pGame = nullptr;

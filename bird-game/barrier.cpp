@@ -40,7 +40,6 @@ int Barrier::get_x() const {
 }
 
 void Barrier::draw(sf::RenderWindow& window) {
-	/*barrier_sprite.rotate(180);*/
 	barrier_sprite.setPosition(barrier_position);
 	window.draw(barrier_sprite);
 }
