@@ -45,7 +45,7 @@ void Game::start(sf::RenderWindow& window) {
 	
 	sf::Music music;
 	music.openFromFile("resources/back1.mp3");
-	//music.play();
+	music.play();
 
 	sf::Clock clock;
 	sf::Event event;
