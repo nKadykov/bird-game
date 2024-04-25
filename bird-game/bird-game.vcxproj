@@ -142,23 +142,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="barrier.cpp" />
-    <ClCompile Include="bird.cpp" />
-    <ClCompile Include="button.cpp" />
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="gameoverwindow.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="menu.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="barrier.h" />
-    <ClInclude Include="bird.h" />
-    <ClInclude Include="button.h" />
-    <ClInclude Include="game.h" />
-    <ClInclude Include="gameoverwindow.h" />
-    <ClInclude Include="menu.h" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="resources\Again.png">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</DeploymentContent>
@@ -217,6 +200,23 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</DeploymentContent>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\barrier.cpp" />
+    <ClCompile Include="src\bird.cpp" />
+    <ClCompile Include="src\button.cpp" />
+    <ClCompile Include="src\game.cpp" />
+    <ClCompile Include="src\gameoverwindow.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\menu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\barrier.h" />
+    <ClInclude Include="src\bird.h" />
+    <ClInclude Include="src\button.h" />
+    <ClInclude Include="src\game.h" />
+    <ClInclude Include="src\gameoverwindow.h" />
+    <ClInclude Include="src\menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
