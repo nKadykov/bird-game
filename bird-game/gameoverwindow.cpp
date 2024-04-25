@@ -2,7 +2,7 @@
 
 GameOverWindow::GameOverWindow() {
 	game_over_state = GameOverState::ON;
-	game_over_texture.loadFromFile("resources/GameOver.jpg");
+	game_over_texture.loadFromFile("resources/GameOver.png");
 	game_over_sprite.setTexture(game_over_texture);
 	background_texture.loadFromFile("resources/back.jpg");
 	background_sprite.setTexture(background_texture);
