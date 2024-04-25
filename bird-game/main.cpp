@@ -66,18 +66,18 @@ int main() {
 				pGame = nullptr;
 			}
 			state = State::GAMEOVER;
-			//game_state = GameState::ON;
+			game_state = GameState::ON;
 		}
-		else if (game_state == GameState::MENU || gameover_state == GameOverState::MENU) {
+		if (game_state == GameState::MENU || gameover_state == GameOverState::MENU) {
 			if (pGame) {
 				delete pGame;
 				pGame = nullptr;
 			}
 			state = State::MENU;
-			//game_state = GameState::ON;
+			game_state = GameState::ON;
 			gameover_state = GameOverState::ON;
 		}
-		else if (button_state == ButtonState::START_GAME || gameover_state == GameOverState::OFF) {
+		if (button_state == ButtonState::START_GAME || gameover_state == GameOverState::OFF) {
 			if (!pGame) {
 				pGame = new Game();
 				pGame->setBackground(background_sprite);
@@ -86,7 +86,7 @@ int main() {
 			menu.setButtonState(ButtonState::NONE);
 			gameover_window.setState(GameOverState::ON);
 		}
-		else if (button_state == ButtonState::CLOSE) {
+		if (button_state == ButtonState::CLOSE) {
 			if (pGame) {
 				delete pGame;
 				pGame = nullptr;
