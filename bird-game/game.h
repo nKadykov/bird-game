@@ -12,6 +12,8 @@ class Game
 private:
 	sf::Sprite background_sprite;
 	GameState game_state;
+	Bird bird;
+	std::deque<Barrier> barrier_deque;
 public:
 	Game();
 	Game(const Game&) = delete;

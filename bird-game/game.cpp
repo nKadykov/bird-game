@@ -17,18 +17,17 @@ GameState Game::getState() const {
 	return game_state;
 }
 
-//void Game::draw(sf::RenderWindow& window) {
-//	for (int i = 0; i < barrier_deque.size(); i++) {
-//		barrier_deque[i].draw(window);
-//	}
-//	bird.draw(window);
-//}
+void Game::draw(sf::RenderWindow& window) {
+	for (int i = 0; i < barrier_deque.size(); i++) {
+		barrier_deque[i].draw(window);
+	}
+	bird.draw(window);
+}
 
 void Game::start(sf::RenderWindow& window) {
 
 	srand(time(0));
 
-	std::deque<Barrier> barrier_deque;
 	sf::Texture barrier_texture;
 	if (!barrier_texture.loadFromFile("resources/barrier.png")) {
 		exit(1);
@@ -36,7 +35,6 @@ void Game::start(sf::RenderWindow& window) {
 	sf::Sprite barrier_sprite;
 	barrier_sprite.setTexture(barrier_texture);
 
-	Bird bird;
 	sf::Texture bird_texture;
 	if (!bird_texture.loadFromFile("resources/bird.png")) {
 		exit(1);
