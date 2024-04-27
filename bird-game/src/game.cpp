@@ -18,6 +18,7 @@ GameState Game::getState() const {
 }
 
 void Game::draw(sf::RenderWindow& window) {
+	window.draw(m_background_sprite);
 	for (int i = 0; i < m_barrier_deque.size(); i++) {
 		m_barrier_deque[i].draw(window);
 	}
@@ -107,12 +108,7 @@ void Game::start(sf::RenderWindow& window) {
 		}
 
 		window.clear();
-		window.draw(m_background_sprite);
-		for (int i = 0; i < m_barrier_deque.size(); i++) {
-			m_barrier_deque[i].draw(window);
-		}
-		
-		m_bird.draw(window);
+		this->draw(window);
 
 		window.display();
 	}
