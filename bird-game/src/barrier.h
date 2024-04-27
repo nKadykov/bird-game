@@ -4,9 +4,9 @@
 class Barrier
 {
 private:
-	sf::Sprite barrier_sprite;
-	float barrier_speed = 400.0f;
-	sf::Vector2f barrier_position;
+	sf::Sprite m_barrier_sprite;
+	float m_barrier_speed = 400.0f;
+	sf::Vector2f m_barrier_position;
 public:
 	Barrier() = delete;
 	Barrier(sf::Sprite&);

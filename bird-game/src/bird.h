@@ -4,10 +4,10 @@
 class Bird
 {
 private:
-	sf::Sprite bird_sprite;
-	sf::Vector2f bird_position;
-	float acceleration_of_gravity = 98000.0f;
-	float bird_acceleration = -50000.0f;
+	sf::Sprite m_bird_sprite;
+	sf::Vector2f m_bird_position;
+	float m_acceleration_of_gravity = 98000.0f;
+	float m_bird_acceleration = -50000.0f;
 public:
 	Bird();
 	Bird(const Bird&) = delete;

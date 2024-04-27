@@ -2,26 +2,26 @@
 #include <iostream>
 
 Game::Game() {
-	game_state = GameState::ON;
+	m_game_state = GameState::ON;
 }
 
 void Game::setState(GameState state) {
-	game_state = state;
+	m_game_state = state;
 }
 
 void Game::setBackground(sf::Sprite& sprite) {
-	background_sprite = sprite;
+	m_background_sprite = sprite;
 }
 
 GameState Game::getState() const {
-	return game_state;
+	return m_game_state;
 }
 
 void Game::draw(sf::RenderWindow& window) {
-	for (int i = 0; i < barrier_deque.size(); i++) {
-		barrier_deque[i].draw(window);
+	for (int i = 0; i < m_barrier_deque.size(); i++) {
+		m_barrier_deque[i].draw(window);
 	}
-	bird.draw(window);
+	m_bird.draw(window);
 }
 
 void Game::start(sf::RenderWindow& window) {
@@ -41,7 +41,7 @@ void Game::start(sf::RenderWindow& window) {
 	}
 	sf::Sprite bird_sprite;
 	bird_sprite.setTexture(bird_texture);
-	bird.setSprite(bird_sprite);
+	m_bird.setSprite(bird_sprite);
 	
 	sf::Music music;
 	music.openFromFile("resources/back1.mp3");
@@ -54,9 +54,9 @@ void Game::start(sf::RenderWindow& window) {
 	float time = 0;
 
 	Barrier new_barrier(-100.0, barrier_sprite);
-	barrier_deque.push_back(new_barrier);
+	m_barrier_deque.push_back(new_barrier);
 
-	while (window.isOpen() && game_state == GameState::ON) {
+	while (window.isOpen() && m_game_state == GameState::ON) {
 
 		dt = clock.getElapsedTime();
 		clock.restart();
@@ -74,7 +74,7 @@ void Game::start(sf::RenderWindow& window) {
 			float start_y = rand() % 600 - rand() % 600;
 			Barrier new_barrier(start_y, barrier_sprite);
 			new_barrier.setSprite(barrier_sprite);
-			barrier_deque.push_back(new_barrier);
+			m_barrier_deque.push_back(new_barrier);
 			barrier_time = 0;
 		}
 
@@ -83,38 +83,38 @@ void Game::start(sf::RenderWindow& window) {
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) {
-			game_state = GameState::MENU;
+			m_game_state = GameState::MENU;
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-			bird.jump();
+			m_bird.jump();
 		}
 
-		bird.update(dt);
+		m_bird.update(dt);
 
-		for (int i = 0; i < barrier_deque.size(); i++) {
-			if (bird.getPosition().intersects(barrier_deque[i].getPosition())) {
-				game_state = GameState::LOSE;
+		for (int i = 0; i < m_barrier_deque.size(); i++) {
+			if (m_bird.getPosition().intersects(m_barrier_deque[i].getPosition())) {
+				m_game_state = GameState::LOSE;
 			}
 		}
 
-		for (int i = 0; i < barrier_deque.size(); i++) {
-			barrier_deque[i].moveLeft(dt);
+		for (int i = 0; i < m_barrier_deque.size(); i++) {
+			m_barrier_deque[i].moveLeft(dt);
 		}
 
-		if (barrier_deque[0].get_x() == 0) {
-			barrier_deque.pop_front();
+		if (m_barrier_deque[0].get_x() == 0) {
+			m_barrier_deque.pop_front();
 		}
 
 		window.clear();
-		window.draw(background_sprite);
-		for (int i = 0; i < barrier_deque.size(); i++) {
-			barrier_deque[i].draw(window);
+		window.draw(m_background_sprite);
+		for (int i = 0; i < m_barrier_deque.size(); i++) {
+			m_barrier_deque[i].draw(window);
 		}
 		
-		bird.draw(window);
+		m_bird.draw(window);
 
 		window.display();
 	}
-	barrier_deque.clear();
+	m_barrier_deque.clear();
 }

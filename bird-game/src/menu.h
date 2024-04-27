@@ -11,9 +11,9 @@ class Menu
 private:
 	std::vector<Button*> button_vector;
 	sf::Texture menu_texture;
-	sf::Sprite menu_sprite;
-	ButtonState button_state;
-	MenuState menu_state;
+	sf::Sprite m_menu_sprite;
+	ButtonState m_button_state;
+	MenuState m_menu_state;
 public:
 	Menu();
 	Menu(std::string);

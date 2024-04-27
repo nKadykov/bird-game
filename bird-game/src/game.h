@@ -10,10 +10,10 @@ enum class GameState {ON, LOSE, MENU};
 class Game
 {
 private:
-	sf::Sprite background_sprite;
-	GameState game_state;
-	Bird bird;
-	std::deque<Barrier> barrier_deque;
+	sf::Sprite m_background_sprite;
+	GameState m_game_state;
+	Bird m_bird;
+	std::deque<Barrier> m_barrier_deque;
 public:
 	Game();
 	Game(const Game&) = delete;
