@@ -55,9 +55,9 @@ void Game::start(sf::RenderWindow& window) {
 	float barrier_time = 0;
 	float time = 0;
 
-	Barrier new_barrier1(-100.0, barrier_sprite);
+	Barrier new_barrier1(-300.0, barrier_sprite);
 	m_barrier_deque.push_back(new_barrier1);
-	Barrier new_barrier2(-100.0 + barrier_sprite.getGlobalBounds().height + 300, barrier_sprite);
+	Barrier new_barrier2(-300.0 + barrier_sprite.getGlobalBounds().height + 300, barrier_sprite);
 	m_barrier_deque.push_back(new_barrier2);
 
 	m_font.loadFromFile("resources/ImpactRegular.ttf");
@@ -80,12 +80,12 @@ void Game::start(sf::RenderWindow& window) {
 			}
 		}
 
-		int rand_y = rand() % 600;
+		int rand_y = rand() % 300;
 		float start_y = rand_y;
 		if (barrier_time > 2.0) {
-			Barrier new_barrier1(-start_y, barrier_sprite);
+			Barrier new_barrier1(-300 - start_y, barrier_sprite);
 			m_barrier_deque.push_back(new_barrier1);
-			Barrier new_barrier2(-start_y + barrier_sprite.getGlobalBounds().height + 300, barrier_sprite);
+			Barrier new_barrier2(-300 - start_y + barrier_sprite.getGlobalBounds().height + 300, barrier_sprite);
 			m_barrier_deque.push_back(new_barrier2);
 			barrier_time = 0;
 		}
