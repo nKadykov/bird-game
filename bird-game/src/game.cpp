@@ -103,7 +103,7 @@ void Game::start(sf::RenderWindow& window) {
 			m_barrier_deque[i].moveLeft(dt);
 		}
 
-		if (m_barrier_deque[0].get_x() == 0) {
+		if (m_barrier_deque[0].get_x() < (0 - barrier_sprite.getGlobalBounds().width)) {
 			m_barrier_deque.pop_front();
 		}
 
