@@ -22,6 +22,7 @@ void Game::draw(sf::RenderWindow& window) {
 	for (int i = 0; i < m_barrier_deque.size(); i++) {
 		m_barrier_deque[i].draw(window);
 	}
+	window.draw(m_score_text);
 	m_bird.draw(window);
 }
 
@@ -115,6 +116,15 @@ void Game::start(sf::RenderWindow& window) {
 
 		if (m_barrier_deque[0].get_x() < (0 - barrier_sprite.getGlobalBounds().width)) {
 			m_barrier_deque.pop_front();
+		}
+
+		for (int i = 0; i < m_barrier_deque.size(); i += 2) {
+			if (m_bird.getPosition().left > m_barrier_deque[i].get_x() && m_bird.getPosition().left < m_barrier_deque[i].get_x() + 7) {
+				m_score_number++;
+				std::string score;
+				score = std::to_string(m_score_number);
+				m_score_text.setString(score);
+			}
 		}
 
 		window.clear();
