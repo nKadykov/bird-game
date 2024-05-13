@@ -65,6 +65,8 @@ void Game::start(sf::RenderWindow& window) {
 	m_score_text.setPosition(600, 50);
 	m_score_text.setFont(m_font);
 	m_score_text.setCharacterSize(100);
+	m_score_text.setOutlineColor(sf::Color::Black);
+	m_score_text.setOutlineThickness(2);
 
 	while (window.isOpen() && m_game_state == GameState::ON) {
 
@@ -119,7 +121,7 @@ void Game::start(sf::RenderWindow& window) {
 		}
 
 		for (int i = 0; i < m_barrier_deque.size(); i += 2) {
-			if (m_bird.getPosition().left > m_barrier_deque[i].get_x() && m_bird.getPosition().left < m_barrier_deque[i].get_x() + 7) {
+			if (m_bird.getPosition().left > m_barrier_deque[i].get_x() && m_bird.getPosition().left < m_barrier_deque[i].get_x() + 8) {
 				m_score_number++;
 				std::string score;
 				score = std::to_string(m_score_number);
