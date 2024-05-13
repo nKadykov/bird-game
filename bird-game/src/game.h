@@ -14,6 +14,9 @@ private:
 	GameState m_game_state;
 	Bird m_bird;
 	std::deque<Barrier> m_barrier_deque;
+	sf::Font m_font;
+	sf::Text m_score_text;
+	int m_score_number = 0;
 public:
 	Game();
 	Game(const Game&) = delete;
